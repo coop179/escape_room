@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<style>
+		a { cursor: default }
+		area { cursor: default }
+	</style>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<p>The city of Athens is beautiful. You would like to take pictures of all the ancient sites and statues, but you are running out of time...stand up is in 30 minutes. You follow the thieves to the shores of the Aegean Sea. As you chase the thieves, you notice they dropped something. Could this be the documents they stole? You quickly search for some clues. While searching, you are visited by a Greek god who you convince to give you safe passage back to Pittsburgh if you can find his missing weapon. Also, you notice your POs favorite animal, and decide to take a picture of it to try to make peace in case you can't find the documents.</p>
+<ol>
+  <li>Battle protection for Hector</li>
+  <li>The shoe of Achillies</li>
+  <li>The Greek God who will help you</li>
+  <li>The Greek God's weapon</li>
+  <li>Your PO's favorite animal</li>
+  <li>The missing Project Soteria requirements documents</li>
+</ol>
+	<div class="alert alert-success alert-dismissible fade show invisible" role="alert"> Congrats! You have found a clue! </div>
+<p>&nbsp;</p>
+<p><img src="aegeansea.png" alt="" width="1024" height="627" usemap="#Map"/>
+  <map name="Map">
+    <area shape="rect" coords="273,530,374,566" href="javascript:found(1);">
+    <area shape="rect" coords="565,204,618,315" href="javascript:found(2);">
+    <area shape="rect" coords="657,536,731,590" href="javascript:found(3);">
+    <area shape="rect" coords="733,310,756,365" href="javascript:found(4);">
+    <area shape="rect" coords="371,289,411,330" href="javascript:found(5);">
+    <area shape="rect" coords="28,268,66,317" href="javascript:found(6);">
+  </map>
+</p>
+</body>
+	<script>
+		var arr = [];
+		
+		function found(obj){
+			if(arr.indexOf(obj) === -1){
+				$(".alert").removeClass('invisible');
+				arr.push(obj)
+				setTimeout(function(){
+					$(".alert").addClass('invisible');
+				},750)
+			}
+			if (arr.length === 6){
+				window.location.href = "room5.html"
+			}
+		}
+	</script>
+</html>

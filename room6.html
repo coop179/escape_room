@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<style>
+		a { cursor: default }
+		area { cursor: default }
+	</style>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<p>You managed to figure out how to operate the crane, but Agamemnon is still guarding the entry way to the submarine, and you have also noticed that the door is locked.  How are you going to get into the submarine?  You will have to find some way to distract him! But, be careful.  Don't get caught!</p>
+<div class="alert alert-found alert-success alert-dismissible fade show d-none" role="alert"> Congrats! You have found a clue! </div>
+	<div class="alert alert-goodshot alert-success alert-dismissible fade show d-none" role="alert"> The crane is over Agamemnon's head.  Maybe you can use that to your advantage. </div>
+<p><img src="crane2.png" alt="" width="1024" height="838" usemap="#Map"/>
+  <map name="Map">
+    <area shape="rect" coords="931,711,1023,754" href="javascript:found(3);">
+    <area shape="rect" coords="603,672,635,698" href="javascript:found(2);">
+    <area shape="rect" coords="-7,569,14,599" href="javascript:found(1);">
+    <area shape="rect" coords="695,339,816,462" href="javascript:goodshot();">
+  </map>
+</p>
+</body>
+	<script>
+			var arr = [];
+			var foundAll = false;
+
+			function found(obj){
+				if(arr.indexOf(obj) === -1){
+					$(".alert-found").removeClass('d-none');
+					arr.push(obj)
+					setTimeout(function(){
+						$(".alert-found").addClass('d-none');
+					},750)
+				}
+				if (arr.length === 3){
+					foundAll = true;	
+				}
+			}
+		
+			function goodshot(){
+				if(foundAll){
+					window.location.href = "room7.html"
+				} else {
+					$(".alert-goodshot").removeClass("d-none");
+					setTimeout(function(){
+						$(".alert-goodshot").addClass('d-none');
+					},3000)
+				}
+			}
+	</script>
+</html>

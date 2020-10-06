@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<style>
+		a { cursor: default }
+		area { cursor: default }
+	</style>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<p>You've found the documents! Now you need to plan your escape. You consult with Neptune and he agrees to give you safe passage back to Pittsburg.  However, you need to find a ship, and not just any ship, but something that would be able to hide you from the Greek gods who stole the documents.  As you search the shores of the Aegean Sea, you find a rather large opening. You venture into the dark space to find a submarine, but it is being guarded by Agamemnon.  You must find a way to distract him, open the door to the sub, and escape. You are so close!</p>
+<div class="alert alert-found alert-success alert-dismissible fade show d-none" role="alert"> Congrats! You have found a clue! </div>
+	<div class="alert alert-locked alert-success alert-dismissible fade show d-none" role="alert"> The door is locked.  Maybe you can go all MacGyver and find some parts to make a tool to break this lock! </div>
+<p>&nbsp;</p>
+<p><img src="submarine1.png" alt="" width="1024" height="619" usemap="#Map"/>
+  <map name="Map">
+    <area shape="rect" coords="316,254,386,326" href="javascript:alert('The controls for the crane are in the cage.  I need to get inside to operate it.');">
+    <area shape="rect" coords="746,344,815,452" href="javascript:test();">
+    <area shape="rect" coords="456,475,502,497" href="javascript:found(2);">
+    <area shape="rect" coords="885,452,925,497" href="javascript:found(1);">
+    <area shape="rect" coords="247,457,311,519" href="javascript:found(3)">
+  </map>
+</p>
+	<!-- Modal -->
+<div class="modal fade" id="insideCage" tabindex="-1" role="dialog" aria-labelledby="insideCageLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="width: 675px">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Crane Operating Room</h5>
+      </div>
+      <div class="modal-body">
+		  <div class="alert alert-found2 alert-success alert-dismissible fade show d-none" role="alert"> Congrats! You have found a clue! </div>
+		  <div class="alert alert-breakme alert-success alert-dismissible fade show d-none" role="alert"> The operation of the crane is controled by a button behind this glass.  Maybe you can go all MacGyver and find some parts to make a tool to break this glass! </div>
+      	<img src="insidecage.png" alt="" width="640" height="519" usemap="#Map2"/>
+        <map name="Map2">
+          <area shape="rect" coords="387,418,531,511" href="javascript:found2(1)">
+          <area shape="rect" coords="180,38,258,127" href="javascript:found2(2)">
+          <area shape="rect" coords="177,136,284,429" href="javascript:found2(3)">
+          <area shape="rect" coords="513,95,610,133" href="javascript:found2(4);">
+          <area shape="rect" coords="500,134,606,226" href="javascript:breakme2();">
+          <area shape="rect" coords="5,22,171,221" href="javascript:breakme();">
+        </map>
+	  </div>
+    </div>
+  </div>
+</div>
+	<!-- Modal -->
+<div class="modal fade" id="breakSearch" tabindex="-1" role="dialog" aria-labelledby="breakSearchLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="width: 675px">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Crane Operating Room</h5>
+      </div>
+      <div class="modal-body">
+		  <div class="alert alert-found3 alert-success alert-dismissible fade show d-none" role="alert"> Congrats! You have found a clue! </div>
+		  <div class="alert alert-breakme alert-success alert-dismissible fade show d-none" role="alert"> The operation of the crane is controled by a button behind this glass.  Maybe you can go all MacGyver and find some parts to make a tool to break this glass! </div>
+   	  <img src="break.png" alt="" width="640" height="531" usemap="#Map3"/>
+      <map name="Map3">
+        <area shape="rect" coords="147,107,177,171" href="javascript:found3(1);">
+        <area shape="rect" coords="88,144,126,177" href="javascript:found3(2);">
+        <area shape="rect" coords="134,196,172,230" href="javascript:found3(3);">
+        <area shape="rect" coords="236,107,332,156" href="javascript:found3(4);">
+        <area shape="rect" coords="494,130,602,232" href="javascript:breakme2();">
+      </map>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+	<script>
+			var arr = [];
+			var arr2 = [];
+			var arr3 = [];
+			var foundAll = false;
+			var foundAll2 = false;
+			var foundAll3 = false;
+
+			function found(obj){
+				if(arr.indexOf(obj) === -1){
+					$(".alert-found").removeClass('d-none');
+					arr.push(obj)
+					setTimeout(function(){
+						$(".alert-found").addClass('d-none');
+					},750)
+				}
+				if (arr.length === 3){
+					foundAll = true;
+					
+				}
+			}
+			function found2(obj){
+				
+				if(arr2.indexOf(obj) === -1){
+					$(".alert-found2").removeClass('d-none');
+					arr2.push(obj)
+					setTimeout(function(){
+						$(".alert-found2").addClass('d-none');
+					},750)
+				}
+				if (arr2.length === 4){
+					foundAll2 = true;
+				}
+			}
+		
+			function found3(obj){
+				if(arr3.indexOf(obj) === -1){
+					$(".alert-found3").removeClass('d-none');
+					arr3.push(obj)
+					setTimeout(function(){
+						$(".alert-found3").addClass('d-none');
+					},750)
+				}
+				if (arr3.length === 4){
+					foundAll3 = true;
+				}
+			}
+
+			function test(){
+				if(foundAll){
+					$("#insideCage").modal('toggle');
+				} else {
+					$(".alert-locked").removeClass('d-none');
+					setTimeout(function(){
+						$(".alert-locked").addClass('d-none');
+					},3000)
+				}
+			}
+		
+			function breakme(){
+				if(foundAll2) {
+					$("#insideCage").modal('hide');
+					$("#breakSearch").modal('show');
+				}
+			}
+		
+			function breakme2(){
+				console.log(foundAll3);
+				if(foundAll3){
+					window.location.href = "room6.html"
+				} else {
+					$(".alert-breakme").removeClass("d-none");
+					setTimeout(function(){
+						$(".alert-breakme").addClass('d-none');
+					},3000)
+				}
+			}
+	</script>
+</html>

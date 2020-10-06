@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<style>
+		a { cursor: default }
+		area { cursor: default }
+	</style>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<p>Well, that seems to have worked.  Now, how do I open the submarine?  There's got to be a remote around here somewhere!</p>
+	<div class="alert alert-locked alert-success alert-dismissible fade show d-none" role="alert"> The door to the submarine is locked by a remote control.  You need to find that remote! </div>
+<p><img src="knockout.png" alt="" width="1024" height="610" usemap="#Map"/>
+  <map name="Map">
+    <area shape="rect" coords="532,367,578,394" href="javascript:searching();">
+    <area shape="rect" coords="269,251,298,308" href="javascript:locked();">
+  </map>
+	
+</p>
+<!-- Modal -->
+ <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="width: 675px">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Searching for the Remote</h5>
+      </div>
+      <div class="modal-body">
+	<div class="alert alert-found alert-success alert-dismissible fade show d-none" role="alert"> Congrats! You have found a clue! </div>
+	<div class="alert alert-key alert-success alert-dismissible fade show d-none" role="alert"> Well, that's the remote! But wait, it appears to be missing some sort of piece, like a key to have it operate. You have to find it. </div>
+<div class="alert alert-code alert-success alert-dismissible fade show d-none" role="alert"> These tool boxes require some kind of code to open.  Maybe you can use some of the clues you have picked up along the way to simulate the code! </div>
+        <img src="toolbox.png" alt="" width="640" height="519" usemap="#Map2"/>
+        <map name="Map2">
+          <area shape="rect" coords="144,224,317,382" href="javascript:key();">
+          <area shape="rect" coords="362,382,412,424" href="javascript:found(1);">
+          <area shape="rect" coords="13,70,473,181" href="javascript:code();">
+        </map>
+ </div>
+    </div>
+  </div>
+</div>
+	
+<!-- Modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="width: 675px">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModal2Label">Searching for the Remote</h5>
+      </div>
+      <div class="modal-body">
+	<div class="alert alert-found2 alert-success alert-dismissible fade show d-none" role="alert"> Congrats! You have found a clue! </div>
+	<div class="alert alert-key2 alert-success alert-dismissible fade show d-none" role="alert"> Well, that's the remote! But wait, it appears to be missing some sort of piece, like a key to have it operate. You have to find it. </div>
+<img src="open.png" alt="" width="640" height="519" usemap="#Map3"/>
+<map name="Map3">
+  <area shape="rect" coords="140,104,198,166" href="javascript:found2(1)">
+  <area shape="rect" coords="158,235,330,369" href="javascript:unlock();">
+</map>
+ </div>
+    </div>
+  </div>
+</div>
+</body>
+	<script>
+		    var arr = [];
+			var arr2 = []; 
+			var foundAll = false;
+			var foundAll2 = false; 
+			
+			function locked(){
+				$(".alert-locked").removeClass("d-none");
+				setTimeout(function(){
+					$(".alert-locked").addClass('d-none');
+				},3000)
+			}
+		
+			function searching(){
+				$("#exampleModal").modal('show')
+			}
+		
+			function key(){
+				$(".alert-key").removeClass('d-none');
+					arr.push(obj)
+					setTimeout(function(){
+						$(".alert-key").addClass('d-none');
+					},750)
+			}
+			function found(obj){
+				if(arr.indexOf(obj) === -1){
+					$(".alert-found").removeClass('d-none');
+					arr.push(obj)
+					setTimeout(function(){
+						$(".alert-found").addClass('d-none');
+					},750)
+				}
+				if (arr.length === 1){
+					foundAll = true;	
+				}
+			}
+			function code(){
+				if(foundAll){
+					$("#exampleModal").modal('hide')
+					$("#exampleModal2").modal('show')
+				} else {
+					$(".alert-code").removeClass("d-none");
+					setTimeout(function(){
+						$(".alert-code").addClass('d-none');
+					},3000)
+				}
+			}
+		
+			function found2(obj){
+				if(arr2.indexOf(obj) === -1){
+					$(".alert-found2").removeClass('d-none');
+					arr2.push(obj)
+					setTimeout(function(){
+						$(".alert-found2").addClass('d-none');
+					},750)
+				}
+				if (arr2.length === 1){
+					foundAll2 = true;	
+				}
+			}
+		
+			function unlock(){
+				if(foundAll2){
+					window.location.href="room8.html"
+				} else {
+					$(".alert-key2").removeClass("d-none");
+				setTimeout(function(){
+					$(".alert-key2").addClass('d-none');
+				},3000)
+				}
+			}
+	</script>
+</html>

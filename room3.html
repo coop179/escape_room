@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<style>
+		a { cursor: default }
+		area { cursor: default }
+	</style>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<p>After successfully gathering more supplies, you jump on a Trojan horse and continue your search. You have followed the thieves to the city of Athens. On the base of the Parthenon, you spot the theives fleeing from a small antiques collector shop. There is so much junk for sale here. You can always pick up a souvenir for your Product Owner from your trip in case you don't recover the documents! But, I wonder what they could have been looking for in this shop! Let's take a look.</p>
+<p>Gather some clues about the identity of the theives from the shop, an don't forget the souvenir!</p>
+<ol>
+  <li>Sparta headwear</li>
+  <li>Headwear of the gods</li>
+  <li>Sacrifice to the gods</li>
+  <li>The face of Zeus</li>
+  <li>Greecian urn</li>
+  <li>And, of course, something you will probably NEVER see your PO wear!</li>
+</ol>
+	<div class="alert alert-success alert-dismissible fade show invisible" role="alert"> Congrats! You have found a clue! </div>
+<p>&nbsp;</p>
+<p><img src="partheneon.png" alt="" width="1024" height="627" usemap="#Map"/>
+  <map name="Map">
+    <area shape="rect" coords="20,170,74,228" href="javascript:found(1);">
+    <area shape="rect" coords="148,232,219,323" href="javascript:found(2);">
+    <area shape="rect" coords="535,131,605,193" href="javascript:found(3);">
+    <area shape="rect" coords="944,115,1002,217" href="javascript:found(4);">
+    <area shape="rect" coords="695,382,729,485" href="javascript:found(5);">
+    <area shape="rect" coords="6,407,71,539" href="javascript:found(6);">
+  </map>
+</p>
+</body>
+	<script>
+		var arr = [];
+		
+		function found(obj){
+			if(arr.indexOf(obj) === -1){
+				$(".alert").removeClass('invisible');
+				arr.push(obj)
+				setTimeout(function(){
+					$(".alert").addClass('invisible');
+				},750)
+			}
+			if (arr.length === 6){
+				window.location.href = "room4.html"
+			}
+		}
+	</script>
+</html>

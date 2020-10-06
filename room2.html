@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<style>
+		a { cursor: default }
+		area { cursor: default }
+	</style>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<p>You've successfully grabbed some supplies, and have managed to stumble into the hanger of the plane the theives used to return to Greece. You can tell that you are hot on their trail. This would be the perfect spot to collect some supplies in case you do catch up with the thieves. Quickly gather some supplies and chase down those thieves, you don't have much time to waste, the product owner will be online soon, and you don't want to miss standup!</p>
+<p>Below are some hints for the items you may need on your journey.</p>
+<ol>
+  <li>Modern doorbell feature</li>
+  <li>Gripping tool</li>
+  <li>Bladed instrument</li>
+  <li>Western prop</li>
+  <li>Washington's Wizards, once</li>
+  <li>Treatment needed if dart is misdirected?</li>
+</ol>
+<div class="alert alert-success alert-dismissible fade show invisible" role="alert"> Congrats! You have found a clue! </div>
+<p>&nbsp;</p>
+<p><img src="hanger.png" alt="" width="1024" usemap="#Map"/>
+  <map name="Map">
+    <area shape="rect" coords="492,324,551,399" href="javascript:found(1);">
+    <area shape="rect" coords="32,89,85,178" href="javascript:found(2);">
+    <area shape="rect" coords="6,472,154,563" href="javascript:found(3);">
+    <area shape="rect" coords="882,478,963,544" href="javascript:found(4);">
+    <area shape="rect" coords="894,552,1009,598" href="javascript:found(5);">
+    <area shape="rect" coords="844,416,914,476" href="javascript:found(6);">
+  </map>
+</p>
+</body>
+	<script>
+		var arr = [];
+		
+		function found(obj){
+			if(arr.indexOf(obj) === -1){
+				$(".alert").removeClass('invisible');
+				arr.push(obj)
+				setTimeout(function(){
+					$(".alert").addClass('invisible');
+				},750)
+			}
+			if (arr.length === 6){
+				window.location.href = "room3.html"
+			}
+		}
+	</script>
+</html>
